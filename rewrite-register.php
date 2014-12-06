@@ -2,7 +2,7 @@
 
 /*
 	Plugin Name: Rewrite Register
-	Plugin URI: https://github.com/alleyinteractive/rewrite-queue
+	Plugin URI: https://github.com/alleyinteractive/rewrite-register
 	Description: A new way to think about adding rewrite rules.
 	Version: 0.1
 	Author: Matthew Boynes

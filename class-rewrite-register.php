@@ -1,12 +1,12 @@
 <?php
 
 /**
- * Rewrite Rule Queue
+ * Rewrite Rule Register
  */
 
-if ( ! class_exists( 'Rewrite_Queue' ) ) :
+if ( ! class_exists( 'Rewrite_Register' ) ) :
 
-class Rewrite_Queue {
+class Rewrite_Register {
 
 	/**
 	 * Hold the singleton instance.
@@ -75,7 +75,7 @@ class Rewrite_Queue {
 	 */
 	public static function instance() {
 		if ( ! isset( self::$instance ) ) {
-			self::$instance = new Rewrite_Queue;
+			self::$instance = new Rewrite_Register;
 			self::$instance->setup();
 		}
 		return self::$instance;
@@ -213,9 +213,9 @@ class Rewrite_Queue {
 	}
 }
 
-function Rewrite_Queue() {
-	return Rewrite_Queue::instance();
+function Rewrite_Register() {
+	return Rewrite_Register::instance();
 }
-Rewrite_Queue();
+Rewrite_Register();
 
 endif;
