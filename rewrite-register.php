@@ -23,19 +23,19 @@
     Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 
-require_once( dirname( __FILE__ ) . '/class-rewrite-queue.php' );
+require_once( dirname( __FILE__ ) . '/class-rewrite-register.php' );
 
 /**
  * Register a set of rewrite rules.
  *
- * @see  Rewrite_Queue::register
+ * @see  Rewrite_Register::register
  *
  * @param  string $name    A reference key for your rules.
  * @param  mixed $version  A version identifier.
  * @param  string $after   The placement for your rewrite rules.
  */
 function wp_register_rewrites( $name, $version = null, $after = 'bottom' ) {
-	Rewrite_Queue()->register( $name, $version, $after );
+	Rewrite_Register()->register( $name, $version, $after );
 }
 
 /**

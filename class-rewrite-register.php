@@ -112,8 +112,8 @@ class Rewrite_Register {
 	}
 
 	/**
-	 * Load the last generate queue from the options API. This is used to check
-	 * for new changes.
+	 * Load the last generate register from the options API. This is used to
+	 * check for new changes.
 	 */
 	protected function load_cached_register() {
 		$this->previous_register = get_option( $this->option, array() );
@@ -189,13 +189,14 @@ class Rewrite_Register {
 	/**
 	 * Recursively crawl a rule placement to put rules in the desired order.
 	 *
-	 * Given a placement, its rule queue is crawled. At each name, the main
-	 * queue is checked to see if any rules should come after it, and those are
-	 * then processed in the order in which they were added. Each of those rules
-	 * is then checked for others which should come after them, and so on.
+	 * Given a placement, its registered rules are crawled. At each name, the
+	 * main register is checked to see if any rules should come after it, and
+	 * those are then processed in the order in which they were added. Each of
+	 * those rules are then checked for others which should come after them, and
+	 * so on.
 	 *
-	 * @param  string $placement The name of the queue placement to process.
-	 * @return array Ordered rules from the given queue placement.
+	 * @param  string $placement The name of the register placement to process.
+	 * @return array Ordered rules from the given register placement.
 	 */
 	protected function dequeue_rules( $placement ) {
 		$return = array();
