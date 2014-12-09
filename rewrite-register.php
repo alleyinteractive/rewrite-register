@@ -30,12 +30,14 @@ require_once( dirname( __FILE__ ) . '/class-rewrite-register.php' );
  *
  * @see  Rewrite_Register::register
  *
- * @param  string $name    A reference key for your rules.
- * @param  mixed $version  A version identifier.
- * @param  string $after   The placement for your rewrite rules.
+ * @param string $name A reference key for your rules.
+ * @param mixed $version Optional. A version identifier.
+ * @param string $after Optional. The placement for your rewrite rules.
+ * @param callable $callback Optional. A callable function or method to
+ *                           automatically hook onto the build action.
  */
-function wp_register_rewrites( $name, $version = null, $after = 'bottom' ) {
-	Rewrite_Register()->register( $name, $version, $after );
+function wp_register_rewrites( $name, $version = null, $after = 'bottom', $callback = null ) {
+	Rewrite_Register()->register( $name, $version, $after, $callback );
 }
 
 /**

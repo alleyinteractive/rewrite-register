@@ -94,21 +94,26 @@ class Rewrite_Register {
 	/**
 	 * Register a set of rewrite rules.
 	 *
-	 * @param  string $name    A reference key for your rules. This must be
-	 *                         unique across all registered rewrites. When rules
-	 *                         are being generated, the action
-	 *                         "build_rewrite_rules_{$name}"
-	 * @param  mixed $version  A version identifier. This will most often be an
-	 *                         integer, but it could also be a float (e.g. 1.2)
-	 *                         or a string (e.g. 'rc3'). The version exists to
-	 *                         tell WordPress that the rules under $name have
-	 *                         changed.
-	 * @param  string $after   The placement for your rewrite rules. This can be
-	 *                         'top', 'bottom', or the $name of any other
-	 *                         registered rewrites.
+	 * @param string $name A reference key for your rules. This must be
+	 *                     unique across all registered rewrites. When rules
+	 *                     are being generated, the action
+	 *                     "build_rewrite_rules_{$name}"
+	 * @param mixed $version Optional. A version identifier. This will most
+	 *                       often be an integer, but it could also be a float
+	 *                       (e.g. 1.2) or a string (e.g. 'rc3'). The version
+	 *                       exists to tell WordPress that the rules under $name
+	 *                       have changed.
+	 * @param string $after Optional. The placement for your rewrite rules. This
+	 *                      can be 'top', 'bottom', or the $name of any other
+	 *                      registered rewrites.
+	 * @param callable $callback Optional. A callable function or method to
+	 *                           automatically hook onto the build action.
 	 */
-	public function register( $name, $version = null, $after = 'bottom' ) {
+	public function register( $name, $version = null, $after = 'bottom', $callback = null ) {
 		$this->register[ $after ][ $name ] = $version;
+		if ( $callback && is_callable( $callback ) ) {
+			add_action( 'build_rewrite_rules_' . $name, $callback );
+		}
 	}
 
 	/**
