@@ -44,7 +44,7 @@ changes automatically flush the rewrite rules.
 To register a rule, you would call:
 
 ```php
-wp_register_rewrites( $name, $version = null, $after = 'bottom' );
+wp_register_rewrites( $name, $version = null, $after = 'bottom', $callback = null );
 ```
 
 `$name` is a unique reference key (slug) which is used in the action fired when
@@ -57,6 +57,9 @@ tell WordPress that the rules under $name have changed.
 
 `$after` is used to indicate the placement for your rewrite rules. This can be
 'top', 'bottom', or the `$name` of any other registered rewrites.
+
+`$callback` is an optional callback which will automatically be hooked to the
+action which fires when rules are generated.
 
 Here's an example of how one might register a set of rules added via the
 `generate_rewrite_rules` filter:
